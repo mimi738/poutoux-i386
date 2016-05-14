@@ -1,0 +1,5 @@
+#!/bin/bash
+
+gksu "lxterminal -e "dpkg-reconfigure flashplugin-nonfree""
+
+zenity --info

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Disposition du clavier
+Comment[fr]=Régler la disposition du clavier.
+Exec=lxkb_config
+Icon=preferences-desktop-keyboard
+Type=Application
+Categories=GTK;Settings;

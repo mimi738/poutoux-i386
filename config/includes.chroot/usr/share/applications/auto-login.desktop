@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Auto login
+Comment[fr]=Régler le login automatique
+Exec=gksu auto-login
+Icon=/usr/share/icons/oxygen/128x128/categories/preferences-other.png
+Type=Application
+Categories=GTK;System;Settings;

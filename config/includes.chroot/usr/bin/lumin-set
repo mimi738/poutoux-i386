@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if lm=$(zenity --entry --title="Lumin set" --text="Veuillez indiquer la luminosité en %" 30% 50% 70% 80% 100%)
+then
+	xbacklight -set $(echo $lm | sed s/%//)%
+fi

@@ -1,0 +1,117 @@
+#!/usr/bin/python
+
+import gtk, os
+
+####################################################
+##		PARTIE A MODIFIER 
+####################################################
+
+## Lien vers le fond d'ecran
+IMG_FILE = 'img/fond.jpg' 
+
+## Commande pour se deconnecter
+CMD_LOGOUT = 'openbox --exit'
+
+## Commande pour reboot
+CMD_REBOOT = 'sudo shutdown -r now'
+
+## Commande pour etteindre l'ordinateur
+CMD_SHUTDOWN = 'sudo shutdown -h now'
+
+
+####################################################
+##		NE RIEN CHANGER A PARTIR D'ICI 
+####################################################
+
+
+class MyApp():
+    def __init__(self):
+        
+        self.window = gtk.Window()        
+        self.window.set_title("Log Out ..")
+        self.window.connect("destroy", self.doquit)
+        self.window.connect("key-press-event", self.onkeypress)
+        self.window.set_size_request(620,200)
+        self.window.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse("black"))
+        self.window.set_decorated(False)
+        self.window.set_position(gtk.WIN_POS_CENTER)
+        
+        self.mainpanel = gtk.Fixed()
+        self.window.add(self.mainpanel)
+        
+        self.screen_x , self.screen_y = gtk.gdk.screen_width(), gtk.gdk.screen_height()
+
+        x = ( self.screen_x / 2 ) - ( 140 * 4 / 2 ) - 30
+        y = ( self.screen_y / 2 ) - 100
+
+        self.bt_tab = []
+        ## 1st Line
+        self.add_bouton("application-exit", x+30, y+30, "Retour")
+        self.add_bouton("system-log-out", x+170, y+30, "Deconnexion")
+        self.add_bouton("system-restart", x+310, y+30, "Redemarrage")
+        self.add_bouton("system-shutdown", x+450, y+30, "Extinction")
+        
+        self.set_background()
+        self.bt_tab[3].grab_focus()             
+
+    def set_background(self):
+        pixbuf = gtk.gdk.pixbuf_new_from_file(IMG_FILE)
+        pixbuf = pixbuf.scale_simple(gtk.gdk.screen_width(), gtk.gdk.screen_height(), gtk.gdk.INTERP_BILINEAR)
+        pixmap, mask = pixbuf.render_pixmap_and_mask()
+        self.window.set_app_paintable(True)
+        self.window.resize(self.screen_x, self.screen_y)
+        self.window.realize()
+        self.window.window.set_back_pixmap(pixmap, False)
+        self.window.move(0,0)
+        del pixbuf
+        del pixmap
+
+    def add_bouton(self, icon, x, y, info):
+        image = gtk.Image()
+        image.set_from_file("img/" + icon + ".png")
+        image.show()
+        bouton = gtk.Button()
+        bouton.set_relief(gtk.RELIEF_NONE)
+        bouton.set_focus_on_click(False)
+        bouton.set_border_width(0)
+        #bouton.set_property('can-focus', False)
+        bouton.add(image)
+        tooltips = gtk.Tooltips()
+        tooltips.set_tip(bouton, str(info))
+        bouton.show()
+        self.mainpanel.put(bouton, x,y)
+        bouton.connect("clicked", self.clic_bouton, icon)
+        self.bt_tab.append(bouton)
+
+    # Cette fonction est invoquee quand on clique sur un bouton.
+    def clic_bouton(self, widget, data=None):
+        if (data=='system-log-out'):
+            os.system(CMD_LOGOUT)
+
+        elif (data=='system-restart'):
+            os.system(CMD_REBOOT)
+
+        elif (data=='system-shutdown'):
+            os.system(CMD_SHUTDOWN)
+
+        self.doquit()           
+
+    def onkeypress(self, widget=None, event=None, data=None):
+        if event.keyval == gtk.keysyms.Escape:
+            self.doquit() 
+    
+    def doquit(self, widget=None, data=None):
+        gtk.main_quit()
+
+    def run(self):
+        self.window.show_all()
+        gtk.main()
+
+#-------------------------
+if __name__ == "__main__":
+#-------------------------
+    ## need to change directory
+    SRC_PATH = os.path.dirname( os.path.realpath( __file__ ) )
+    os.chdir(SRC_PATH)
+    app = MyApp()
+    app.run()

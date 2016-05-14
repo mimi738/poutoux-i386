@@ -1,0 +1,19 @@
+#!/bin/bash
+
+lightdm="/etc/lightdm/lightdm.conf"
+
+if login=$(zenity --entry --entry-text="aucun" --title="Connexion automatique" --text="Veuillez indiquer l'utilisateur qui doit se connecter automatiquement: " $(cat /etc/passwd | grep /bin/bash | cut -d: -f1 | sed 's/root//g'))
+then
+
+	if [ $login = "aucun" ]
+	then
+		sed -i 's/.*autologin-user=.*/#autologin-user=/g' $lightdm
+		sed -i 's/.*autologin-user-timeout=.*/#autologin-user-timeout=0/g' $lightdm
+	else
+		if time=$(zenity --entry --entry-text="0" --title="Connexion automatique" --text="La connexion doit se faire au bout de combien de temps ?" 3 5 10)
+		then
+			sed -i 's/.*autologin-user=.*/autologin-user='$login'/g' $lightdm
+			sed -i 's/.*autologin-user-timeout=.*/autologin-user-timeout='$time'/g' $lightdm
+		fi	
+	fi
+fi

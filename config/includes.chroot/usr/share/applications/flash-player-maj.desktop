@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Mettre à jour Adobe Flash Player
+Comment[fr]=Mise à jour pour Adobe Flash Player
+Exec=maj-flash
+Icon=flash-player-properties
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;System;
+NotShowIn=KDE;

@@ -1,0 +1,18 @@
+
+[Added Associations]
+text/plain=gedit.desktop;
+application/pdf=epdfview.desktop;
+image/bmp=gthumb.desktop;
+image/gif=gthumb.desktop;
+image/jpeg=gthumb.desktop;
+image/png=gthumb.desktop;
+image/svg+xml=gthumb.desktop;
+image/tiff=gthumb.desktop;
+image/x-bmp=gthumb.desktop;
+image/x-ico=gthumb.desktop;
+image/x-pcx=gthumb.desktop;
+image/x-png=gthumb.desktop;
+image/x-tga=gthumb.desktop;
+image/xpm=gthumb.desktop;
+
+
