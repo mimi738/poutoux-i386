@@ -5,18 +5,16 @@ set -e
 lb config noauto \
 	--architectures i386 \
 	--debian-installer live \
+	--distribution jessie \
 	--apt apt \
 	--mirror-bootstrap http://debian.mirrors.ovh.net/debian/ \
-	--mirror-chroot-security http://security.debian.org/ \
 	--mirror-binary http://debian.mirrors.ovh.net/debian/ \
-        --mirror-binary-security http://security.debian.org/ \
 	--mirror-chroot http://debian.mirrors.ovh.net/debian/ \
-	--mirror-debian-installer  http://ftp2.fr.debian.org/debian/ \
+	--mirror-debian-installer  http://debian.mirrors.ovh.net/debian/ \
 	--binary-images iso-hybrid \
 	--chroot-filesystem squashfs \
 	--memtest none \
 	--updates false \
-	--iso-volume="Poutoux" \
 	--archive-areas "main contrib non-free" \
 	--bootappend-live "locales=fr_FR.UTF-8 keyboard-layouts=fr username=poutoux boot=live quiet" \
 	"${@}"

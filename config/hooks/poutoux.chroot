@@ -1,4 +1,6 @@
 !/bin/sh
 set -e
 
-apt-get remove --purge nautilus
+apt-get remove --purge -y nautilus
+apt-get autoremove -y --purge 
+apt-get clean
