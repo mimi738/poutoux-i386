@@ -2,7 +2,7 @@
 
 lightdm="/etc/lightdm/lightdm.conf"
 
-if login=$(zenity --entry --entry-text="aucun" --title="Connexion automatique" --text="Veuillez indiquer l'utilisateur qui doit se connecter automatiquement: " $(cat /etc/passwd | grep /bin/bash | cut -d: -f1 | sed 's/root//g'))
+if login=$(zenity --entry --entry-text="aucun" --title="Connexion automatique" --text="Veuillez indiquer l'utilisateur qui doit se connecter automatiquement: " $(cat /etc/passwd | grep /bin/bash | cut -d: -f1 | sed 's/root/aucun/g'))
 then
 
 	if [ $login = "aucun" ]
