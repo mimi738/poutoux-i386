@@ -16,5 +16,5 @@ lb config noauto \
 	--memtest none \
 	--updates false \
 	--archive-areas "main contrib non-free" \
-	--bootappend-live "locales=fr_FR.UTF-8 keyboard-layouts=fr username=poutoux boot=live quiet" \
+	--bootappend-live "locales=fr_FR.UTF-8 keyboard-layouts=fr username=poutoux boot=live quiet splash" \
 	"${@}"

@@ -7,5 +7,4 @@ Type=oneshot
 ExecStart=/usr/bin/network-init
 
 [Install]
-WantedBy=multi-user.target
-
+WantedBy=networking.service
