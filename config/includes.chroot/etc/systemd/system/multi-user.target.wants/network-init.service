@@ -1,0 +1,11 @@
+[Unit]
+Description=Service pour passer en mode maison ou mobile
+Before=networking.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/network-init
+
+[Install]
+WantedBy=multi-user.target
+
