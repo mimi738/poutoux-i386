@@ -9,7 +9,6 @@ source /etc/network/interfaces.d/*
 auto lo
 iface lo inet loopback" > /etc/network/interfaces
 
-cat /etc/network/interfaces
-
 rm /usr/bin/network-init
-rm /etc/systemd/system/networking.service.wants/network-init.service
+systemctl disable network-init
+rm -R /etc/systemd/system/multi-user.target.wants

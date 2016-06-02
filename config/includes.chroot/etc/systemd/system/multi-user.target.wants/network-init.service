@@ -1,0 +1,9 @@
+[Unit]
+Description=Initialise le réseaux
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/network-init
+
+[Install]
+WantedBy=multi-user.target
