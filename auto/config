@@ -5,7 +5,7 @@ set -e
 lb config noauto \
 	--architectures i386 \
 	--debian-installer live \
-	--distribution jessie \
+	--distribution stretch \
 	--apt apt \
 	--mirror-bootstrap http://debian.mirrors.ovh.net/debian/ \
 	--mirror-binary http://debian.mirrors.ovh.net/debian/ \

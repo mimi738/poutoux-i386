@@ -1,7 +1,8 @@
 openbox
 lxpanel
 pcmanfm
-iceweasel-l10n-fr
+firefox-esr
+firefox-esr-l10n-fr
 vlc
 gedit
 gparted
@@ -10,7 +11,8 @@ zenity
 flashplugin-nonfree
 oxygen-icon-theme
 lxterminal
-gthumb
+eog
+gcalctool
 xpdf
 xfburn
 sound-juicer
@@ -32,6 +34,7 @@ libdvdcss2
 gnome-screenshot
 xul-ext-adblock-plus
 lxrandr
+lxinput
 xserver-xorg-input-multitouch
 gnome-system-tools
 ntp
